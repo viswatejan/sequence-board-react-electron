@@ -1,0 +1,69 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html, body, #root {
+  height: 100%;
+  margin: 0px;
+}
+#root{
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #775e67;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.header {
+  flex-direction: row;
+}
+.title {
+  font-size: 24;
+  color: #ccc;
+}
+.boardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 65%;  
+}
+.playerStatus {
+  flex: 1;
+  margin: 10px;
+}
+.chip {
+  width: 50%;
+  object-fit: contain;
+}
+.row {
+  display: flex;
+  flex: 1;
+  justify-content: space-between
+}
+.cardHolder {
+  flex: 1;
+  margin: 10px;
+  display: flex;
+}
+.card {
+  width: 100%;
+  object-fit: contain;
+}
+.chipOnCard {
+  width: 50%;
+  height: 50%;
+  flex: 1;
+  object-fit: contain;
+}
