@@ -1,43 +1,24 @@
 import React from 'react';
+import store from '../core/sequenceStore';
+import  { placeChip, removeChip } from '../core/Actions';
 
 export default class Card extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            card: null
-        };
         this._onCardPress = this._onCardPress.bind(this);
         this._onCardLongPress = this._onCardLongPress.bind(this);
     }
 
-    componentDidMount() {
-        const { card } = this.props;
-        this.setState({ card });
-    }
-
-    toggleChip(remove) {
-        if (this.state.card.type === 'BACK') {
-            return;
-        }
-        if (this.state.card.player && !remove) {
-            return;
-        }
-        let { card } = this.state;
-        card.player = remove ? null : this.props.player;
-        this.setState({ card });
-        this.props.playerChanged();
-    }
-
     _onCardPress() {
-        if(this.state.card && !this.state.card.player){
-            this.toggleChip();
+        if(this.props.card && this.props.card.type !== 'BACK' && !this.props.card.player){
+            store.dispatch(placeChip(this.props.card));
         }
     }
 
     _onCardLongPress() {
-        if(this.state.card && this.state.card.player){
-            this.toggleChip(true);
+        if(this.props.card && this.props.card.type !== 'BACK' && this.props.card.player){
+            store.dispatch(removeChip(this.props.card));
         }
     }
 
@@ -45,11 +26,11 @@ export default class Card extends React.Component {
         let _chip = null;
         let _card = null;
 
-        if (this.state.card) {
-            if (this.state.card.player) {
-                _chip = (<img className="chipOnCard" src={'../assets/images/chips/' + this.state.card.player + '.png'} alt={this.state.card.player}/>);
+        if (this.props.card) {
+            if (this.props.card.player) {
+                _chip = (<img className="chipOnCard" src={'../assets/images/chips/' + this.props.card.player + '.png'} alt={this.props.card.player}/>);
             }
-            _card = (<img className="card" src={'../assets/images/cards/' + this.state.card.type + '.png'} alt={this.state.card.type} onClick={this._onCardPress}/>);
+            _card = (<img className="card" src={'../assets/images/cards/' + this.props.card.type + '.png'} alt={this.props.card.type} onClick={this._onCardPress}/>);
         }
         return (
             <div className="cardHolder">
