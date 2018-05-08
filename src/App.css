@@ -11,6 +11,12 @@ html, body, #root {
 #root{
   background-color: #775e67;
 }
+.boardContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
 .board {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -24,7 +30,7 @@ html, body, #root {
 }
 .title {
   font-size: 1.5em;
-  color: #ccc;
+  color: #fff;
   font-family: cursive;
   margin: 5px;
 }
@@ -41,7 +47,7 @@ html, body, #root {
   object-fit: contain;
 }
 .playerStatus {
-  grid-column: 5/7;
+  grid-column: 1/11;
   justify-self: center;
   align-self: center;
   display: flex;

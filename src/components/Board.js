@@ -5,6 +5,10 @@ import  { changePlayer } from '../core/Actions';
 
 export default class Board extends React.Component {
     
+    componentDidMount() {
+        document.addEventListener('contextmenu', (event) => event.preventDefault());
+    }
+
     _playerChangedManually = () => {
         store.dispatch(changePlayer());
     }
