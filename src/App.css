@@ -8,35 +8,25 @@ html, body, #root {
   height: 100%;
   margin: 0;
 }
-.header {
-  grid-area: 1/1/span 1/ span 10;
-  justify-self: center;
-  align-self: end;
-}
-.title {
-  font-size: 2em;
-  color: #ccc;
-}
-.boardContainer {
+#root{
   background-color: #775e67;
 }
 .board {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  grid-gap: 10px;
+  grid-template-rows: auto repeat(10, minmax(auto, calc(100vh/12 - 10px))) auto;
+  grid-row-gap: 10px;
 }
-.playerStatus {
-  grid-area: 12/5/span 1/span 2;
+.header {
+  grid-column: 1/11;
   justify-self: center;
+  align-self: center;
 }
-.chip {
-  object-fit: contain;
-}
-.cardHolder {
-  /* flex: 1;
-  margin: 4px;
-  display: flex; */
+.title {
+  font-size: 1.5em;
+  color: #ccc;
+  font-family: cursive;
+  margin: 5px;
 }
 .card {
   width: 100%;
@@ -44,8 +34,19 @@ html, body, #root {
   object-fit: contain;
 }
 .chipOnCard {
-  /* width: 50%;
-  height: 50%;
-  flex: 1;
-  object-fit: contain; */
+  position: relative;
+  width: 25%;
+  top: -64%;
+  left: 38%;
+  object-fit: contain;
+}
+.playerStatus {
+  grid-column: 5/7;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+}
+.chip {
+  object-fit: contain;
 }
